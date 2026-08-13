@@ -101,11 +101,13 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Disable GPU
 # Performance Comparison
 The DPB solver requires a fine time step (0.5 s) to maintain numerical stability, resulting in 345,600 temporal steps and a computation time of 1.86 s for a 48‑hour simulation. In contrast, the LSTM and PINN models are data‑driven and physics‑informed surrogates, respectively, which do not require temporal discretization for stability; they provide direct predictions at any specified time horizon and particle size.
 
-Table 2. Computational performance comparison: DPB, LSTM, PINN
-Method	Grid Size (L × t)	Computation Time, s	Speed‑up
-DPB	53 × 345,600	1.86	1×
-LSTM	10 × 90	0.119	15.6×
-PINN	10 × 90	0.017	110×
+### Table 2. Computational performance comparison: DPB, LSTM, PINN
+
+| Method | Grid Size (L × t) | Computation Time, s | Speed‑up |
+|--------|-------------------|---------------------|----------|
+| DPB    | 53 × 345,600      | 1.86                | 1×       |
+| LSTM   | 10 × 90           | 0.119               | 15.6×    |
+| **PINN** | **10 × 90**    | **0.017**           | **110×** |
 
 At the inference stage, for a forecast of 90 days with 10 particle size classes:
 - LSTM achieves a 15.6× speed‑up over DPB (0.119 s)
