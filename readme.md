@@ -12,10 +12,7 @@ The model addresses vulnerabilities in purely data-driven approaches by incorpor
 This study presents a qualitatively new approach to linearizing the population balance equations and demonstrates the feasibility of their solution using PINNs. Model parameters are task‑dependent and require case‑specific tuning. The developed system of equations is amenable to solution via PINN under a wide range of coefficients and boundary conditions, though this implementation focuses on conditions representative of alumina refineries processing boehmite-diaspore bauxites.
 
 ### Industrial Context
-The chosen case reflects typical operating conditions where the Sauter mean diameter of precipitated hydrate particles falls within **30-60 µm** and the growth rate ranges from **0.8 to 1.3 µm/day**. A validation experiment under these conditions was conducted earlier, with results presented in
-[Golubev, V.O.; Vasiliev, V.V.; Brichkin, V.N.; Chistyakov, D.G. Method of Modeling the Precipitation Process of Aluminate Liquors
-in Laboratory Experiment under Batch Conditions. In Proceedings of the 24th Conference “Aluminum of Siberia”, Krasnoyarsk,
-Russia, 10–14 September 2018; pp. 202–205.].
+The chosen case reflects typical operating conditions where the Sauter mean diameter of precipitated hydrate particles falls within **30-60 µm** and the growth rate ranges from **0.8 to 1.3 µm/day**. A validation experiment under these conditions was conducted earlier, with results presented in [previous work](https://www.researchgate.net/publication/332247745)
 
 ## Architecture
 
