@@ -77,7 +77,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Disable GPU
 # Citation
 If you use this code in your research, please cite:
 @article{Litvinova2026PINN,
-  author = {Litvinova, Tatiana E. and Golubev, Vladimir O. and Tuleshov, Nickolai V.},
+  author = {Litvinova, T.E. and Golubev, V.O. and Tuleshov, N.V.},
   title = {PINN-PBE Model for Describing Gibbsite Crystallization Dynamics},
   journal = {Metals},
   volume = {16},
