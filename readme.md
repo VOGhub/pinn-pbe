@@ -76,4 +76,4 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Disable GPU
 
 # Citation
 If you use this code in your research, please cite:
-@article{Litvinova2026PINN, author = {Litvinova, T.E. and Golubev, V.O. and Tuleshov, N.V.}, title = {PINN-PBE Model for Describing Gibbsite Crystallization Dynamics}, journal = {Metals}, volume = {16}, number = {8}, pages = {903}, year = {2026}, doi = {10.3390/met16080903}, url = {https://doi.org/10.3390/met16080903} }
+Litvinova, T.E.; Golubev, V.O.; Tuleshov, N.V. PINN-PBE Model for Describing Gibbsite Crystallization Dynamics. Metals 2026, *16*, 903. https://doi.org/10.3390/met16080903
