@@ -66,6 +66,23 @@ Al2O3_in, Na2Oo, Na2Ok, TC = 103.0, 161.0, 143.0, 62.0
 # Molar weights
 MW_Al2O3, MW_AlOH3 = 0.102, 0.078    # [kg/mol]
 ```
+# Performance Comparison
+The DPB solver requires a fine time step (0.5 s) to maintain numerical stability, resulting in 345,600 temporal steps and a computation time of 1.86 s for a 48‑hour simulation. In contrast, the LSTM and PINN models are data‑driven and physics‑informed surrogates, respectively, which do not require temporal discretization for stability; they provide direct predictions at any specified time horizon and particle size.
+At the inference stage, for a forecast of 90 days with 10 interested particle size classes, the LSTM‑based model achieves a 15.6 times speed‑up over DPB (0.119 s). The proposed PINN model further reduces the inference time to 0.017 s on the same grid — a 110‑fold speed‑up compared to DPB and 7 times faster than LSTM (see Table 1).
+
+### Table 1. Computational performance comparison
+
+| Method | Grid Size (L × t) | Computation Time, s | Speed‑up |
+|--------|-------------------|---------------------|----------|
+| DPB    | 53 × 345,600      | 1.86                | 1×       |
+| LSTM   | 10 × 90           | 0.119               | 15.6×    |
+| **PINN** | **10 × 90**    | **0.017**           | **110×** |
+
+This significant acceleration at the inference stage, combined with the physical consistency guaranteed by the PINN framework, makes the model particularly attractive for real‑time process control and optimization tasks in industrial alumina production.
+
+*Note: The present work does not pursue exhaustive optimization of the PINN architecture; the configuration is limited to a basic selection of the number of neurons and hidden layers.*
+
+See full text article [here](https://www.researchgate.net/publication/412197001)
 
 ## Clone repository
 git clone https://github.com/vladimirgolubev2-ship-it/pinn-pbe.git
@@ -95,25 +112,6 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Disable GPU
 # Or install CPU-only TensorFlow:
 # pip install tensorflow-cpu==2.10.0
 ```
-
-# Performance Comparison
-The DPB solver requires a fine time step (0.5 s) to maintain numerical stability, resulting in 345,600 temporal steps and a computation time of 1.86 s for a 48‑hour simulation. In contrast, the LSTM and PINN models are data‑driven and physics‑informed surrogates, respectively, which do not require temporal discretization for stability; they provide direct predictions at any specified time horizon and particle size.
-At the inference stage, for a forecast of 90 days with 10 interested particle size classes, the LSTM‑based model achieves a 15.6 times speed‑up over DPB (0.119 s). The proposed PINN model further reduces the inference time to 0.017 s on the same grid — a 110‑fold speed‑up compared to DPB and 7 times faster than LSTM (see Table 1).
-
-### Table 1. Computational performance comparison
-
-| Method | Grid Size (L × t) | Computation Time, s | Speed‑up |
-|--------|-------------------|---------------------|----------|
-| DPB    | 53 × 345,600      | 1.86                | 1×       |
-| LSTM   | 10 × 90           | 0.119               | 15.6×    |
-| **PINN** | **10 × 90**    | **0.017**           | **110×** |
-
-This significant acceleration at the inference stage, combined with the physical consistency guaranteed by the PINN framework, makes the model particularly attractive for real‑time process control and optimization tasks in industrial alumina production.
-
-*Note: The present work does not pursue exhaustive optimization of the PINN architecture; the configuration is limited to a basic selection of the number of neurons and hidden layers.*
-
-See full text article [here](https://www.researchgate.net/publication/412197001)
-
 # Citation
 If you use this code in your research, please cite:
 @article{If you use this code in your research, please cite: Litvinova, T.E.; Golubev, V.O.; Tuleshov, N.V. PINN-PBE Model for Describing Gibbsite Crystallization Dynamics. Metals 2026, 16(8): 903. https://doi.org/10.3390/met16080903}}
