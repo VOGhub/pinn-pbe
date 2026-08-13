@@ -46,11 +46,12 @@ The loss function incorporates:
 θ(L,0) = Th0·exp(–L/393.3), where L is particle size [m]
 
 ### Kinetic and Process Coefficients
-Parameter   Value	    Description
-k₀          4.7×10¹² 	Pre-exponential factor, m/s
-E_act       73      	Activation energy, kJ/mol
-z₁           2	        Oversaturation Exponent
-∂θ/∂t|_agg  0	        Agglomeration contribution
+| Parameter | Value | Description |
+|-----------|-------|-------------|
+| k₀ | 4.7×10¹² | Pre-exponential factor, m/s |
+| E_act | 73 | Activation energy, kJ/mol |
+| z₁ | 2 | Oversaturation Exponent |
+| ∂θ/∂t\|_agg | 0 | Agglomeration contribution |
 
 ```python
 # Domain
@@ -100,8 +101,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # Disable GPU
 
 # Performance Comparison
 The DPB solver requires a fine time step (0.5 s) to maintain numerical stability, resulting in 345,600 temporal steps and a computation time of 1.86 s for a 48‑hour simulation. In contrast, the LSTM and PINN models are data‑driven and physics‑informed surrogates, respectively, which do not require temporal discretization for stability; they provide direct predictions at any specified time horizon and particle size.
+At the inference stage, for a forecast of 90 days with 10 interested particle size classes, the LSTM‑based model achieves a 15.6 times speed‑up over DPB (0.119 s). The proposed PINN model further reduces the inference time to 0.017 s on the same grid — a 110‑fold speed‑up compared to DPB and 7 times faster than LSTM (see Table 1).
 
-### Table 2. Computational performance comparison: DPB, LSTM, PINN
+### Table 1. Computational performance comparison
 
 | Method | Grid Size (L × t) | Computation Time, s | Speed‑up |
 |--------|-------------------|---------------------|----------|
@@ -109,13 +111,11 @@ The DPB solver requires a fine time step (0.5 s) to maintain numerical stability
 | LSTM   | 10 × 90           | 0.119               | 15.6×    |
 | **PINN** | **10 × 90**    | **0.017**           | **110×** |
 
-At the inference stage, for a forecast of 90 days with 10 particle size classes:
-- LSTM achieves a 15.6× speed‑up over DPB (0.119 s)
-- PINN further reduces inference time to 0.017 s — a 110‑fold speed‑up compared to DPB and 7 times faster than LSTM
-
 This significant acceleration at the inference stage, combined with the physical consistency guaranteed by the PINN framework, makes the model particularly attractive for real‑time process control and optimization tasks in industrial alumina production.
 
 *Note: The present work does not pursue exhaustive optimization of the PINN architecture; the configuration is limited to a basic selection of the number of neurons and hidden layers.*
+
+See full text article [here](https://www.researchgate.net/publication/412197001)
 
 # Citation
 If you use this code in your research, please cite:
